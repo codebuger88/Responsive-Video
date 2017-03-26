@@ -1,20 +1,30 @@
 (function ($) {
     $.fn.ResponsiveVideo = function (options) {
         var opts = $.extend({}, {
-                containerClass: 'video-container'
-            }, options);
+                selector: 'iframe',
+                containerClass: 'video-container',
+                source: ['youtube', 'vimeo'],
+                extraSource: []
+            }, options),
+            allowSources = new RegExp($.unique($.merge(opts.source, opts.extraSource)).join('|'), 'gi');
 
         return this.each(function () {
-            var elem = $(this),
-                width = parseInt(elem.width(), 10),
-                height = parseInt(elem.height(), 10),
+            var $selector = $((opts.selector) ? opts.selector : 'iframe', $(this)),
                 $wrapper = $('<div></div>'),
                 $container = $('<div class="' + opts.containerClass + '"></div>');
 
-            elem.wrap($wrapper.css({
-                width: width,
-                'max-width': '100%'
-            })).wrap($container);
+            $selector.each(function (index, element) {
+                var $element = $(element),
+                    width = parseInt($element.width(), 10),
+                    source = $element.prop('src');
+
+                if (source.match(allowSources)) {
+                    $element.wrap($wrapper.css({
+                        width: width,
+                        'max-width': '100%'
+                    })).wrap($container);
+                }
+            });
         });
     };
 }(jQuery));
