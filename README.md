@@ -23,7 +23,7 @@ $('.vimeo').ResponsiveVideo({
 });
 
 // 開放使用的影音來源
-$('.extra').ResponsiveVideo({
+$('.only').ResponsiveVideo({
     source: ['youtube']
 });
 
