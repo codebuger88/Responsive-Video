@@ -1,5 +1,5 @@
 /*
- * jQuery ResponsiveVideo v1.0.2
+ * jQuery ResponsiveVideo v1.0.1
  * Author: Kyle
  */
 (function ($) {
