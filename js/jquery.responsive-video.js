@@ -1,3 +1,7 @@
+/*
+ * jQuery ResponsiveVideo v1.0.2
+ * Author: Kyle
+ */
 (function ($) {
     $.fn.ResponsiveVideo = function (options) {
         var opts = $.extend({}, {
